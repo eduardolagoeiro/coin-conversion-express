@@ -3,4 +3,4 @@ import server from './server';
 
 dotenv.config();
 
-server();
+server().catch(console.error);

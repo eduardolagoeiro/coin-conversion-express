@@ -1,7 +1,15 @@
 import app from './app';
+import db from './db';
 
-function init(): void {
-  app.listen(process.env.PORT || 4000);
+async function init(): Promise<void> {
+  await db.connect();
+  const port = process.env.PORT || 4000;
+  return new Promise<void>((resolve) => {
+    app.listen(port, () => {
+      console.log(`server running on port ${port}`);
+      resolve();
+    });
+  });
 }
 
 export default init;

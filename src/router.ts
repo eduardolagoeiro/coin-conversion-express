@@ -26,7 +26,6 @@ router.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
-    // eslint-disable-next-line no-console
     if (!err.status || err.status === 500) console.error(err);
     res.status(err.status || 500).send({
       message: err.message,

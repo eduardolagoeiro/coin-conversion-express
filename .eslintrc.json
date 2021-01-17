@@ -26,6 +26,7 @@
 		}
 	},
 	"rules": {
+		"no-console": "off",
 		"prettier/prettier": "error",
 		"import/extensions": [
 			"error",
