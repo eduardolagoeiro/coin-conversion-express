@@ -9,3 +9,11 @@ describe('test status', () => {
     expect(result.text).toBe('ok');
   });
 });
+
+describe('test 404', () => {
+  test('Request should return 404 when not match', async () => {
+    const result = await request(app).get('/api/something_not_exists').send();
+
+    expect(result.status).toBe(404);
+  });
+});
