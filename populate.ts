@@ -11,13 +11,15 @@ db.connect().then(() => {
     const fromCoin = coins[i];
     for (let j = 0; j < coins.length; j += 1) {
       const toCoin = coins[j];
-      promises.push(
-        ConversionRateModel.create({
-          fromCoin,
-          toCoin,
-          rate: parseFloat((Math.random() * 3).toFixed(2)),
-        })
-      );
+      if (fromCoin !== toCoin) {
+        promises.push(
+          ConversionRateModel.create({
+            fromCoin,
+            toCoin,
+            rate: parseFloat((Math.random() * 3).toFixed(2)),
+          })
+        );
+      }
     }
   }
   return Promise.all(promises).then(() => process.exit(0));
