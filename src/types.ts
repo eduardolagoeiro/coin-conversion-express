@@ -1,9 +1,18 @@
+import { Document } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 
 export type Coin = 'USD' | 'EUR' | 'BRL' | 'BTC';
 
-export interface Conversion {
-  id: string;
+export interface ConversionRate extends Document {
+  _id: string;
+  fromCoin: Coin;
+  toCoin: Coin;
+  rate: number;
+  createdAt: Date;
+}
+
+export interface Conversion extends Document {
+  _id: string;
   fromCoin: Coin;
   toCoin: Coin;
   fromValue: number;
@@ -17,7 +26,8 @@ export interface ConversionEntry {
   fromValue: number;
 }
 
-export type Controller = Record<
-  string,
-  (req: Request, res: Response, next: NextFunction) => void
->;
+export type Controller = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => void;

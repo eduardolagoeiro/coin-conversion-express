@@ -35,6 +35,7 @@
 				"ts": "never"
 			}
 		],
-		"import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts"]}]
+		"import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/test/*"]}],
+		"no-underscore-dangle": ["error", {"allow": ["_id"] }]
 	}
 }
