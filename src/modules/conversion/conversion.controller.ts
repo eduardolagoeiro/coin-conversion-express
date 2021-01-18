@@ -5,6 +5,7 @@ import ConversionRateModel from '../conversionRate/conversionRate.model';
 
 const controller: {
   create: Controller;
+  list: Controller;
 } = {
   create: async (req, res, next) => {
     try {
@@ -39,6 +40,14 @@ const controller: {
         toValue: converted,
       });
       return res.status(200).send(conversion);
+    } catch (error) {
+      return next(error);
+    }
+  },
+  list: async (req, res, next) => {
+    try {
+      const conversions = await ConversionModel.find({}, { __v: 0 });
+      return res.send(conversions);
     } catch (error) {
       return next(error);
     }

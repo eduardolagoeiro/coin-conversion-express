@@ -63,3 +63,12 @@ describe('/post', () => {
     expect(conversion.toValue).toBeDefined();
   });
 });
+
+describe('/get', () => {
+  test('if returns 200 with an array of conversions', async () => {
+    const result = await request(app).get('/api/conversion').send();
+
+    expect(result.status).toBe(200);
+    expect(Array.isArray(result.body)).toEqual(true);
+  });
+});

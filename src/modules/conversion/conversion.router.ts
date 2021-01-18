@@ -21,4 +21,6 @@ router.post(
   ConversionController.create
 );
 
+router.get('/', ConversionController.list);
+
 export default router;
